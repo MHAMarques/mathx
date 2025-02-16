@@ -13,7 +13,7 @@ export default function Menu() {
       <Image src="/logo.png" alt="Logo da minha aplicação" width={200} height={100} />
       { load ? (
         <>
-          <MenuButton onClick={() => {playSound("/audio/click.wav"), setPage("play")}}>
+          <MenuButton onClick={() => {playSound("/audio/click.wav"), setPage("game")}}>
             Jogar
           </MenuButton>
           <MenuButton onClick={() => {playSound("/audio/click.wav"), setPage("help")}}>
