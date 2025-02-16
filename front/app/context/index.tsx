@@ -6,6 +6,7 @@ import { createContext, useContext, ReactNode, useState } from "react";
 interface AppContextType {
     page: string;
     setPage: (page: string) => void;
+    playSound: (src: string) => void;
 }
 
 // Criando o contexto com valores padrão
@@ -14,9 +15,14 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 // Criando o Provider do contexto
 export function AppProvider({ children }: { children: ReactNode }) {
     const [page, setPage] = useState("home");
+    
+    const playSound = (src: string) => {
+      const sound = new Audio(src);
+      sound.play();
+    };
 
   return (
-    <AppContext.Provider value={{ page, setPage }}>
+    <AppContext.Provider value={{ page, setPage, playSound }}>
       {children}
     </AppContext.Provider>
   );

@@ -5,13 +5,8 @@ import { useApp } from "@/app/context";
 import { MainSection, MenuButton } from "@/app/styles/menu";
 
 export default function Menu() {
-  const { page, setPage } = useApp();
+  const { page, setPage, playSound } = useApp();
   const [ load, setLoad ] = useState(false);
-
-  const playSound = (src: string) => {
-    const sound = new Audio(src);
-    sound.play();
-  };
   
   return (
     <MainSection>
