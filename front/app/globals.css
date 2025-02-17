@@ -28,9 +28,7 @@ body {
   background: var(--background);
   font-family: "Orbitron", sans-serif;
   text-align: center;
-}
-
-@keyframes move {
-  from{bottom: 0%}
-  to{bottom: 100%}
+  margin: 0; 
+  height: 100%; 
+  overflow: hidden
 }

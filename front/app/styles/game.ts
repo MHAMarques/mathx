@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 
 export const MainContainer = styled.div`
     display: flex;
@@ -88,10 +88,39 @@ export const BottomSection = styled.div`
     min-height: 50px;
     padding: 15px;
     background-color: red;
+    z-index:3;
 `;
 
-export const NumberDot = styled.button`
+const moveRandom = (topEnd: string, leftEnd: string) => keyframes`
+  from {
+    bottom: -20px;
+    left: 0px || righ: 0px;
+  }
+  to {
+    bottom: 110%;
+    left: ${leftEnd};
+  }
+`;
+
+// Componente do NumberDot com estilos dinâmicos
+export const AnimatedDot = styled.div<{ $left: string; $topEnd: string; $leftEnd: string}>`
     position: absolute;
+    left: ${(props) => props.$left};
+    bottom: -20px;
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+    animation: ${(props) => moveRandom(props.$topEnd, props.$leftEnd)} 5s linear forwards;
+    `;
+
+export const NumberDot = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,7 +129,5 @@ export const NumberDot = styled.button`
     background-color: red;
     border-radius: 50%;
     font-size: 2rem;
-    z-index: 2;
-    animation-name: move;
-    animation-duration:15s;
+    z-index: 1;
 `;

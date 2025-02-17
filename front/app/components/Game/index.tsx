@@ -7,6 +7,7 @@ import {
     TopSection,
     MainSection,
     BottomSection,
+    AnimatedDot,
     NumberDot
 } from "@/app/styles/game";
 
@@ -14,7 +15,9 @@ export default function Game() {
   type Dot = {
     id: number;
     value: number;
-    createdAt: number; // Timestamp de criação
+    left: string;
+    topEnd: string;
+    leftEnd: string;
   };
 
   const { 
@@ -31,17 +34,26 @@ export default function Game() {
 
   useEffect(() => {
     const addDotInterval = setInterval(() => {
+      const leftStart = `${Math.random() * 100}%`; // Posição inicial aleatória no eixo X
+      const topEnd = `${10 + Math.random() * 50}%`; // Altura final aleatória
+      const leftVariation = (Math.random() - 0.5) * 50; // Define se vai mover para esquerda ou direita (-25% a +25%)
+      const leftEnd = `calc(${leftStart} + ${leftVariation}%)`; // Posição final no eixo X
+
       setDots((prevDots) => [
         ...prevDots,
-        { id: Date.now(), value: Math.floor(Math.random() * 101), createdAt: Date.now() }
+        {
+          id: Date.now(),
+          value: Math.floor(Math.random() * 101),
+          left: leftStart,
+          topEnd,
+          leftEnd,
+        }
       ]);
-    }, 5000);
+    }, 1000);
 
     const removeOldDotsInterval = setInterval(() => {
-      setDots((prevDots) =>
-        prevDots.filter((dot) => Date.now() - dot.createdAt < 30000) // Remove após 30s
-      );
-    }, 1000); // Verifica a cada 1s
+      setDots((prevDots) => prevDots.slice(1)); // Remove o mais antigo
+    }, 30000);
 
     return () => {
       clearInterval(addDotInterval);
@@ -71,10 +83,12 @@ export default function Game() {
             </TopSection>
             
             <MainSection>
-            {dots.map((dot) => (
-              <NumberDot key={dot.id} onClick={() => handleRemoveDot(dot.id)}>
-                {dot.value}
-              </NumberDot>
+            {dots.map(({id, value, left, topEnd, leftEnd}) => (
+              <AnimatedDot key={id} $left={left} $topEnd={topEnd} $leftEnd={leftEnd}>
+                <NumberDot onClick={() => handleRemoveDot(id)}>
+                  {value}
+                </NumberDot>
+              </AnimatedDot>
             ))}
             </MainSection>
             
