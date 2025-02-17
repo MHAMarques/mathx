@@ -11,7 +11,7 @@ import {
 } from "@/app/styles/game";
 
 export default function Game() {
-  const { page, setPage, playSound } = useApp();
+  const { playSound } = useApp();
   const [ load, setLoad ] = useState(true);
   
   return (
@@ -32,7 +32,7 @@ export default function Game() {
             </TopSection>
             
             <MainSection>
-                <NumberDot>
+                <NumberDot  onClick={() => playSound("/audio/click.wav")}>
                     4
                 </NumberDot>
             </MainSection>
