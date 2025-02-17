@@ -11,7 +11,15 @@ import {
 } from "@/app/styles/game";
 
 export default function Game() {
-  const { playSound } = useApp();
+  const { 
+    playSound,
+    level,
+    setLevel,
+    points,
+    setPoints,
+    life,
+    setLife
+  } = useApp();
   const [ load, setLoad ] = useState(true);
   
   return (
@@ -39,7 +47,7 @@ export default function Game() {
             
             <BottomSection>
                 <div>
-                    <p></p>Nivel 1 | Pontos: 0 | Tentativas: 5
+                    <p></p>Nivel {level} | Pontos: {points} | Tentativas: {life}
                 </div>
             </BottomSection>
         </>
