@@ -41,9 +41,13 @@ export default function Game() {
     select,
     setSelect,
     result,
-    setResult
+    setResult,
+    setPage,
+    over,
+    setOver,
+    load,
+    setLoad
   } = useApp();
-  const [load, setLoad] = useState(true);
   const [dots, setDots] = useState<Dot[]>([]);
 
   const setClickSound = (level: number) => {
@@ -266,6 +270,7 @@ export default function Game() {
       setHelp('Escolha um número');
       setNextop(selectOp() === '=' ? '+' : '-');
     }
+
     if(opera === '='){
       setHelp('Qual o resultado?');
       playSound(setAnswerSound(level,'q'));
@@ -293,6 +298,13 @@ export default function Game() {
         bubbles++
       }
     }
+
+    if(life <= 0) {
+      setOver(true);
+      setLoad(false);
+      playSound('/audio/game_over.wav')
+    }
+
     console.log('RESULT: ', result)
   }, [result, opera]);
   
@@ -335,9 +347,9 @@ export default function Game() {
       ) : (
         <MainSection>
           <Image src="/logo.png" alt="Logo da minha aplicação" width={200} height={175} priority={true}/>
-          <h1>Level {level}</h1>
-          <MenuButton onClick={() => {playSound("/audio/click.wav"), setLoad(true)}}>
-            Jogar
+          {over ? <h1>Game Over<br />Level {level}<br />Points {points}</h1> : <h1>Level {level}</h1>}
+          <MenuButton onClick={() => {playSound("/audio/click.wav"), over ? setPage("home") : setLoad(true)}}>
+            {over ? 'Voltar' : 'Jogar'}
           </MenuButton>
         </MainSection>
       ) }

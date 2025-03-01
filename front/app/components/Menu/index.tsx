@@ -5,15 +5,14 @@ import { useApp } from "@/app/context";
 import { MainSection, MenuButton } from "@/app/styles/menu";
 
 export default function Menu() {
-  const { page, setPage, playSound } = useApp();
-  const [ load, setLoad ] = useState(false);
+  const { setPage, playSound, setOver, load, setLoad, setLife } = useApp();
   
   return (
     <MainSection>
       <Image src="/logo.png" alt="Logo da minha aplicação" width={200} height={175} priority={true}/>
       { load ? (
         <>
-          <MenuButton onClick={() => {playSound("/audio/click.wav"), setPage("game")}}>
+          <MenuButton onClick={() => {playSound("/audio/click.wav"), setPage("game"), setOver(false), setLife(2)}}>
             Jogar
           </MenuButton>
           <MenuButton onClick={() => {playSound("/audio/click.wav"), setPage("help")}}>

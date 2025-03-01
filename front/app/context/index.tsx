@@ -24,7 +24,11 @@ interface AppContextType {
     select: number;
     setSelect: (select: number) => void;
     result: number;
-    setResult: (result: number) => void; 
+    setResult: (result: number) => void;
+    over: boolean;
+    setOver: (over: boolean) => void;
+    load: boolean;
+    setLoad: (load: boolean) => void;
 }
 
 // Criando o contexto com valores padrão
@@ -35,13 +39,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const [page, setPage] = useState("home");
     const [level, setLevel] = useState(1);
     const [points, setPoints] = useState(0);
-    const [life, setLife] = useState(15);
+    const [life, setLife] = useState(0);
     const [help, setHelp] = useState('');
     const [opera, setOpera] = useState('');
     const [nextop, setNextop] = useState('');
     const [oldop, setOldop] = useState('');
     const [select, setSelect] = useState(0);
     const [result, setResult] = useState(0);
+    const [over, setOver] = useState(false);
+    const [load, setLoad] = useState(false);
 
     const playSound = (src: string) => {
       const sound = new Audio(src);
@@ -49,7 +55,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     };    
 
   return (
-    <AppContext.Provider value={{ playSound, page, setPage, level, setLevel, points, setPoints, life, setLife, help, setHelp, opera, setOpera, nextop, setNextop, oldop, setOldop, select, setSelect, result, setResult }}>
+    <AppContext.Provider value={{ playSound, page, setPage, level, setLevel, points, setPoints,
+       life, setLife, help, setHelp, opera, setOpera, nextop, setNextop, oldop, setOldop, 
+       select, setSelect, result, setResult, over, setOver, load, setLoad }}>
       {children}
     </AppContext.Provider>
   );
