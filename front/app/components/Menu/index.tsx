@@ -10,7 +10,7 @@ export default function Menu() {
   
   return (
     <MainSection>
-      <Image src="/logo.png" alt="Logo da minha aplicação" width={200} height={100} />
+      <Image src="/logo.png" alt="Logo da minha aplicação" width={200} height={175} priority={true}/>
       { load ? (
         <>
           <MenuButton onClick={() => {playSound("/audio/click.wav"), setPage("game")}}>

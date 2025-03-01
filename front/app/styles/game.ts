@@ -139,12 +139,28 @@ export const TopSection = styled.div<{ $level: number }>`
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
         background-color: ${(props) => setLevelColor(props.$level)};
         padding-bottom: 5px;
         border-radius: 50%;
         font-size: 2rem;
+        font-weight: bold;
+        z-index: 2;
+    }
+
+    .old_box {
+        position: absolute;
+        bottom: 0px;
+        right: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background-color: ${(props) => setLevelColor(props.$level)};
+        border-radius: 50%;
+        font-size: 0.8rem;
         font-weight: bold;
         z-index: 2;
     }

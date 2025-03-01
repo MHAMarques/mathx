@@ -17,6 +17,14 @@ interface AppContextType {
     setHelp: (help: string) => void;
     opera: string;
     setOpera: (opera: string) => void;
+    nextop: string;
+    setNextop: (nextop: string) => void;
+    oldop: string;
+    setOldop: (oldop: string) => void;
+    select: number;
+    setSelect: (select: number) => void;
+    result: number;
+    setResult: (result: number) => void; 
 }
 
 // Criando o contexto com valores padrão
@@ -31,8 +39,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const [help, setHelp] = useState('');
     const [opera, setOpera] = useState('');
     const [nextop, setNextop] = useState('');
-    const [oldop, setOldtop] = useState('');
+    const [oldop, setOldop] = useState('');
     const [select, setSelect] = useState(0);
+    const [result, setResult] = useState(0);
 
     const playSound = (src: string) => {
       const sound = new Audio(src);
@@ -40,7 +49,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     };    
 
   return (
-    <AppContext.Provider value={{ playSound, page, setPage, level, setLevel, points, setPoints, life, setLife, help, setHelp, opera, setOpera }}>
+    <AppContext.Provider value={{ playSound, page, setPage, level, setLevel, points, setPoints, life, setLife, help, setHelp, opera, setOpera, nextop, setNextop, oldop, setOldop, select, setSelect, result, setResult }}>
       {children}
     </AppContext.Provider>
   );
