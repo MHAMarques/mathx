@@ -114,6 +114,10 @@ export const TopSection = styled.div<{ $level: number }>`
     max-height:120px;
     padding: 15px;
     z-index: 5;
+    @media only screen and (max-width: 600px) {
+      font-size: 2rem;
+      padding-bottom: 0px;
+    }
 
     .math_box {
         position: relative;
@@ -131,6 +135,10 @@ export const TopSection = styled.div<{ $level: number }>`
         font-weight: bold;
         margin-right: 20px;
         padding-bottom: 5px;
+        @media only screen and (max-width: 600px) {
+          font-size: 2rem;
+          padding-bottom: 0px;
+        }
     }
     
     .next_box {
@@ -148,6 +156,10 @@ export const TopSection = styled.div<{ $level: number }>`
         font-size: 2rem;
         font-weight: bold;
         z-index: 2;
+        @media only screen and (max-width: 600px) {
+          font-size: 1rem;
+          padding-bottom: 0px;
+        }
     }
 
     .old_box {

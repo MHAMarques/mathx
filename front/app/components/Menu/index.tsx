@@ -23,9 +23,9 @@ export default function Menu() {
           </MenuButton>
           <MenuButton onClick={() => {
             playSound("/audio/click.wav");
-            setPage("help");
+            setPage("how");
           }}>
-            Help
+            How
           </MenuButton>
           <MenuButton onClick={() => {
             playSound("/audio/click.wav");

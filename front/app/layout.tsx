@@ -3,8 +3,8 @@ import { AppProvider } from "@/app/context";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-  title: "Math Math X - Puzzle Game",
-  description: "Um jogo de matemática básica com operações de adição, subtração e multiplicação de números inteiros positivos.",
+  title: "Memory Math - Puzzle Game",
+  description: "Um jogo da memória de matemática básica com operações de adição, subtração e multiplicação de números inteiros positivos.",
 };
 
 export default function RootLayout({
