@@ -85,7 +85,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
     };
 
     const saveRecords = (newRecord: record) => {
-      const updatedRecords = [...records, newRecord];
+      const updatedRecords = [...records, newRecord]
+        .sort((a, b) => {
+          if (a.level !== b.level) return b.level - a.level;
+          return b.points - a.points;
+        })
+        .slice(0, 10);
       setRecords(updatedRecords);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedRecords));
     };

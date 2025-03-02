@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useApp } from "@/app/context";
 import { MainSection, MenuButton } from "@/app/styles/toplist";
 
@@ -15,7 +15,7 @@ export default function Toplist() {
                 const storedResults = localStorage.getItem(STORAGE_KEY);
                 if (storedResults) setRecords(JSON.parse(storedResults));
         }}
-    }, [page]);
+    }, [page, setRecords]);
   return (
     <MainSection>
       <Image src="/icon.png" alt="Logo da minha aplicação" width={100} height={100} priority={true}/>
