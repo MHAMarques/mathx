@@ -786,7 +786,6 @@ export default function Game() {
   }
 
   const setLevelSound = (level: number) => {
-    const choice = Math.floor(Math.random() * 3)
     if(level === 14 || level === 20 || level === 26)return "/audio/NextLevel_A.wav";
     if(level === 2 || level === 13 || level === 15 || level === 25)return "/audio/NextLevel_B.wav";
     if(level === 3 || level === 11 || level === 17 || level === 24 || level === 30)return "/audio/NextLevel_G.wav";
@@ -859,10 +858,9 @@ export default function Game() {
         setLife(life-1);
         setHelp('Incorreto!');
         playSound(setAnswerSound(level,'n'));
-        // setNextop('+');
-        setDots([]);
+        setNextop('+');
 
-        const takeYourTime = setTimeout(() => { 
+        setTimeout(() => { 
           setResult(0);
           setOldop('');
           setOpera('');
@@ -870,16 +868,16 @@ export default function Game() {
         }, 1500);
 
       } else {
-        setHelp('Correto!')
+        setHelp('Correto!');
         playSound(setAnswerSound(level,'y'));
-        // setNextop('+');
-        setDots([]);
+        setNextop('+');
 
-        const takeYourTime = setTimeout(() => { 
+        setTimeout(() => { 
           nextLevel(level, result);
         }, 1500);
 
       }
+      setDots([]);
     }
     else {
       setHelp('');
@@ -894,7 +892,7 @@ export default function Game() {
 
   useEffect(() => {
     const addDotInterval = setInterval(() => {
-      const leftStart = `${Math.random() * 100}%`; // Posição inicial aleatória no eixo X
+      const leftStart = `${Math.random() * 80}%`; // Posição inicial aleatória no eixo X
       const leftVariation = (Math.random() - 0.5) * 50; // Define se vai mover para esquerda ou direita (-25% a +25%)
       const leftEnd = `calc(${leftStart} + ${leftVariation}%)`; // Posição final no eixo X
       const dotColor = Math.floor(Math.random() * 32) + 1;//Escolhe cor da bola
@@ -915,17 +913,18 @@ export default function Game() {
     return () => {
       clearInterval(addDotInterval);
     };
-  }, [load]);
+  }, [load, level]);
 
   useEffect(() => {
     const removeOldDotsInterval = setInterval(() => {
-      load ? setDots((prevDots) => prevDots.slice(dots.length > 10 ? dots.length - 5 : 1)) : setDots([]);
+      if(load) setDots((prevDots) => prevDots.slice(dots.length > 10 ? dots.length - 5 : 1))
+      else setDots([]);
     }, 30000);
 
     return () => {
       clearInterval(removeOldDotsInterval);
     };
-  }, [load]);
+  }, [load, dots.length]);
 
   useEffect(() => {
     if(opera === '') {
@@ -933,12 +932,14 @@ export default function Game() {
       setNextop(selectOp() === '=' ? '+' : '-');
     }
 
+  }, [opera]);
+
+  useEffect(() => {
     if(opera === '='){
       setHelp('Qual o resultado?');
       playSound(setAnswerSound(level,'q'));
       setDots([]);
-      let bubbles = 0;
-
+      console.log('RESULT: ', result)
       for (let bubbles = 0; bubbles <= 10; bubbles++){
         const leftStart = `${Math.random() * 100}%`; // Posição inicial aleatória no eixo X
         const leftVariation = (Math.random() - 0.5) * 50; // Define se vai mover para esquerda ou direita (-25% a +25%)
@@ -958,7 +959,9 @@ export default function Game() {
         ]);
       }
     }
+  }, [result, opera]);
 
+  useEffect(() => {
     if(life <= 0) {
       setOver(true);
       setLoad(false);
@@ -969,9 +972,7 @@ export default function Game() {
       setDots([]);
       playSound('/audio/game_over.wav')
     }
-
-    console.log('RESULT: ', result)
-  }, [result, opera]);
+  }, [life]);
   
   return (
     <MainContainer>
@@ -1013,7 +1014,11 @@ export default function Game() {
         <MainSection>
           <Image src="/logo.png" alt="Logo da minha aplicação" width={400} height={350} priority={true}/>
           {over ? <h1>Game Over<br />Level {level}<br />Points {points}</h1> : <h1>Level {level}</h1>}
-          <MenuButton onClick={() => {playSound("/audio/click.wav"), over ? setPage("home") : setLoad(true)}}>
+          <MenuButton onClick={() => {
+            playSound("/audio/click.wav");
+            if (over) setPage("home");
+            else setLoad(true);
+          }}>
             {over ? 'Voltar' : 'Jogar'}
           </MenuButton>
         </MainSection>

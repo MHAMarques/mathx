@@ -97,6 +97,7 @@ export const MainContainer = styled.div`
     justify-content: start;
     align-items: center;
     height: auto;
+    overflow: clip;
 `;
 
 export const TopSection = styled.div<{ $level: number }>`
@@ -174,6 +175,9 @@ export const TopSection = styled.div<{ $level: number }>`
         padding-left: 20px;
         font-weight: bold;
         font-size: 2rem;
+        @media only screen and (max-width: 600px) {
+          font-size: 1rem;
+        }
     }
 `;
 
