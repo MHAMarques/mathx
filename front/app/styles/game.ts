@@ -69,7 +69,7 @@ const setLevelColor = (level: number) => {
             case 33:
               return '#1000D9';
             default:
-              return '#FFFFFF';
+              return '#000000';
     }
 };
 

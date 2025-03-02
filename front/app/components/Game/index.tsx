@@ -51,60 +51,374 @@ export default function Game() {
   const [dots, setDots] = useState<Dot[]>([]);
 
   const setClickSound = (level: number) => {
-      const choice = Math.floor(Math.random() * 3)
       const chord = Math.floor(Math.random() * 3)
       if(level === 1){
-        switch (choice) {
+        switch (chord) {
           case 0:
-            if(chord === 0) return "/audio/birth_A2.wav";
-            if(chord === 1) return "/audio/birth_Cs2.wav";
-            if(chord === 2) return "/audio/birth_E2.wav";
-          
+            return "/audio/birth_A4.wav";
           case 1:
-            case 0:
-            if(chord === 0) return "/audio/birth_A3.wav";
-            if(chord === 1) return "/audio/birth_Cs3.wav";
-            if(chord === 2) return "/audio/birth_E3.wav";
-          
+            return "/audio/birth_Cs4.wav";
           case 2:
-            case 0:
-            if(chord === 0) return "/audio/birth_A4.wav";
-            if(chord === 1) return "/audio/birth_Cs4.wav";
-            if(chord === 2) return "/audio/birth_E4.wav";
+            return "/audio/birth_E4.wav"
         }
       }
 
       if(level === 2){
-        switch (choice) {
+        switch (chord) {
           case 0:
-            if(chord === 0) return "/audio/birth_B2.wav";
-            if(chord === 1) return "/audio/birth_Ds2.wav";
-            if(chord === 2) return "/audio/birth_Fs2.wav";
-            break;
-          
+            return "/audio/birth_B4.wav";
           case 1:
-            case 0:
-            if(chord === 0) return "/audio/birth_B3.wav";
-            if(chord === 1) return "/audio/birth_Ds3.wav";
-            if(chord === 2) return "/audio/birth_Fs3.wav";
-            break;
-          
+            return "/audio/birth_Ds4.wav";
           case 2:
-            case 0:
-            if(chord === 0) return "/audio/birth_B4.wav";
-            if(chord === 1) return "/audio/birth_Ds4.wav";
-            if(chord === 2) return "/audio/birth_Fs4.wav";
-            break;
-          default:
-            break;
+            return "/audio/birth_Fs4.wav"
         }
       }
 
-      return '';
+      if(level === 3){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_G4.wav";
+          case 1:
+            return "/audio/birth_B4.wav";
+          case 2:
+            return "/audio/birth_D4.wav"
+        }
+      }
+
+      if(level === 4){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_C4.wav";
+          case 1:
+            return "/audio/birth_E4.wav";
+          case 2:
+            return "/audio/birth_G4.wav"
+        }
+      }
+
+      if(level === 5){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_D4.wav";
+          case 1:
+            return "/audio/birth_Fs4.wav";
+          case 2:
+            return "/audio/birth_A4.wav"
+        }
+      }
+
+      if(level === 6){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_F4.wav";
+          case 1:
+            return "/audio/birth_A4.wav";
+          case 2:
+            return "/audio/birth_C4.wav"
+        }
+      }
+
+      if(level === 7){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_E4.wav";
+          case 1:
+            return "/audio/birth_Gs4.wav";
+          case 2:
+            return "/audio/birth_B4.wav"
+        }
+      }
+
+      if(level === 8){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_D3.wav";
+          case 1:
+            return "/audio/birth_Fs3.wav";
+          case 2:
+            return "/audio/birth_A3.wav"
+        }
+      }
+
+      if(level === 9){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_E3.wav";
+          case 1:
+            return "/audio/birth_Gs3.wav";
+          case 2:
+            return "/audio/birth_B3.wav"
+        }
+      }
+
+      if(level === 10){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_F3.wav";
+          case 1:
+            return "/audio/birth_A3.wav";
+          case 2:
+            return "/audio/birth_C3.wav"
+        }
+      }
+
+      if(level === 11){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_G3.wav";
+          case 1:
+            return "/audio/birth_B3.wav";
+          case 2:
+            return "/audio/birth_D3.wav"
+        }
+      }
+
+      if(level === 12){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_C3.wav";
+          case 1:
+            return "/audio/birth_E3.wav";
+          case 2:
+            return "/audio/birth_G3.wav"
+        }
+      }
+
+      if(level === 13){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_B3.wav";
+          case 1:
+            return "/audio/birth_Ds3.wav";
+          case 2:
+            return "/audio/birth_Fs3.wav"
+        }
+      }
+
+      if(level === 14){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_A3.wav";
+          case 1:
+            return "/audio/birth_Cs3.wav";
+          case 2:
+            return "/audio/birth_E3.wav"
+        }
+      }
+
+      if(level === 15){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_B2.wav";
+          case 1:
+            return "/audio/birth_Ds2.wav";
+          case 2:
+            return "/audio/birth_Fs2.wav"
+        }
+      }
+
+      if(level === 16){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_E2.wav";
+          case 1:
+            return "/audio/birth_Gs2.wav";
+          case 2:
+            return "/audio/birth_B2.wav"
+        }
+      }
+
+      if(level === 17){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_G2.wav";
+          case 1:
+            return "/audio/birth_B2.wav";
+          case 2:
+            return "/audio/birth_D2.wav"
+        }
+      }
+
+      if(level === 18){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_F2.wav";
+          case 1:
+            return "/audio/birth_A2.wav";
+          case 2:
+            return "/audio/birth_C2.wav"
+        }
+      }
+
+      if(level === 19){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_C2.wav";
+          case 1:
+            return "/audio/birth_E2.wav";
+          case 2:
+            return "/audio/birth_G2.wav"
+        }
+      }
+
+      if(level === 20){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_A2.wav";
+          case 1:
+            return "/audio/birth_Cs2.wav";
+          case 2:
+            return "/audio/birth_E2.wav"
+        }
+      }
+
+      if(level === 21){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_D2.wav";
+          case 1:
+            return "/audio/birth_Fs2.wav";
+          case 2:
+            return "/audio/birth_A2.wav"
+        }
+      }
+
+      if(level === 22){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_E3.wav";
+          case 1:
+            return "/audio/birth_Gs2.wav";
+          case 2:
+            return "/audio/birth_B3.wav"
+        }
+      }
+
+      if(level === 23){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_F3.wav";
+          case 1:
+            return "/audio/birth_A2.wav";
+          case 2:
+            return "/audio/birth_C3.wav"
+        }
+      }
+
+      if(level === 24){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_G3.wav";
+          case 1:
+            return "/audio/birth_B2.wav";
+          case 2:
+            return "/audio/birth_D3.wav"
+        }
+      }
+
+      if(level === 25){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_B3.wav";
+          case 1:
+            return "/audio/birth_Ds2.wav";
+          case 2:
+            return "/audio/birth_Fs3.wav"
+        }
+      }
+
+      if(level === 26){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_A3.wav";
+          case 1:
+            return "/audio/birth_Cs2.wav";
+          case 2:
+            return "/audio/birth_E3.wav"
+        }
+      }
+
+      if(level === 27){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_D3.wav";
+          case 1:
+            return "/audio/birth_Fs2.wav";
+          case 2:
+            return "/audio/birth_A3.wav"
+        }
+      }
+
+      if(level === 28){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_C3.wav";
+          case 1:
+            return "/audio/birth_E2.wav";
+          case 2:
+            return "/audio/birth_G3.wav"
+        }
+      }
+
+      if(level === 29){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_F2.wav";
+          case 1:
+            return "/audio/birth_A3.wav";
+          case 2:
+            return "/audio/birth_C2.wav"
+        }
+      }
+
+      if(level === 30){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_G2.wav";
+          case 1:
+            return "/audio/birth_Cs3.wav";
+          case 2:
+            return "/audio/birth_D2.wav"
+        }
+      }
+
+      if(level === 31){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_D2.wav";
+          case 1:
+            return "/audio/birth_F3.wav";
+          case 2:
+            return "/audio/birth_A2.wav"
+        }
+      }
+
+      if(level === 32){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_C2.wav";
+          case 1:
+            return "/audio/birth_E3.wav";
+          case 2:
+            return "/audio/birth_G4.wav"
+        }
+      }
+
+      if(level === 33){
+        switch (chord) {
+          case 0:
+            return "/audio/birth_E2.wav";
+          case 1:
+            return "/audio/birth_G3.wav";
+          case 2:
+            return "/audio/birth_B4.wav"
+        }
+      }
+
+      return "/audio/click.wav";
   };
 
   const setAnswerSound = (level: number, answer: string) => {
-    const choice = Math.floor(Math.random() * 3)
     if(level === 1){
       switch (answer) {
         case 'q':
@@ -112,7 +426,7 @@ export default function Game() {
         case 'y':
           return "/audio/answer_Ay.wav";
         case 'n':
-          return "/audio/answer_An.wav";
+          return "/audio/answer_An.wav"
       }
     }
 
@@ -123,18 +437,365 @@ export default function Game() {
         case 'y':
           return "/audio/answer_By.wav";
         case 'n':
-          return "/audio/answer_Bn.wav";
+          return "/audio/answer_Bn.wav"
       }
     }
 
-    return '';
+    if(level === 3){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Gq.wav";
+        case 'y':
+          return "/audio/answer_Gy.wav";
+        case 'n':
+          return "/audio/answer_Gn.wav"
+      }
+    }
+
+    if(level === 4){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Cq.wav";
+        case 'y':
+          return "/audio/answer_Cy.wav";
+        case 'n':
+          return "/audio/answer_Cn.wav"
+      }
+    }
+
+    if(level === 5){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Cq.wav";
+        case 'y':
+          return "/audio/answer_Cy.wav";
+        case 'n':
+          return "/audio/answer_Cn.wav"
+      }
+    }
+
+    if(level === 6){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Fq.wav";
+        case 'y':
+          return "/audio/answer_Fy.wav";
+        case 'n':
+          return "/audio/answer_Fn.wav"
+      }
+    }
+
+    if(level === 7){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Eq.wav";
+        case 'y':
+          return "/audio/answer_Ey.wav";
+        case 'n':
+          return "/audio/answer_En.wav"
+      }
+    }
+
+    if(level === 8){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Dq.wav";
+        case 'y':
+          return "/audio/answer_Dy.wav";
+        case 'n':
+          return "/audio/answer_Dn.wav"
+      }
+    }
+
+    if(level === 9){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Eq.wav";
+        case 'y':
+          return "/audio/answer_Ey.wav";
+        case 'n':
+          return "/audio/answer_En.wav"
+      }
+    }
+
+    if(level === 10){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Fq.wav";
+        case 'y':
+          return "/audio/answer_Fy.wav";
+        case 'n':
+          return "/audio/answer_Fn.wav"
+      }
+    }
+
+    if(level === 11){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Gq.wav";
+        case 'y':
+          return "/audio/answer_Gy.wav";
+        case 'n':
+          return "/audio/answer_Gn.wav"
+      }
+    }
+
+    if(level === 12){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Cq.wav";
+        case 'y':
+          return "/audio/answer_Cy.wav";
+        case 'n':
+          return "/audio/answer_Cn.wav"
+      }
+    }
+
+    if(level === 13){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Bq.wav";
+        case 'y':
+          return "/audio/answer_By.wav";
+        case 'n':
+          return "/audio/answer_Bn.wav"
+      }
+    }
+
+    if(level === 14){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Aq.wav";
+        case 'y':
+          return "/audio/answer_Ay.wav";
+        case 'n':
+          return "/audio/answer_An.wav"
+      }
+    }
+
+    if(level === 15){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Bq.wav";
+        case 'y':
+          return "/audio/answer_By.wav";
+        case 'n':
+          return "/audio/answer_Bn.wav"
+      }
+    }
+
+    if(level === 16){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Eq.wav";
+        case 'y':
+          return "/audio/answer_Ey.wav";
+        case 'n':
+          return "/audio/answer_En.wav"
+      }
+    }
+
+    if(level === 17){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Gq.wav";
+        case 'y':
+          return "/audio/answer_Gy.wav";
+        case 'n':
+          return "/audio/answer_Gn.wav"
+      }
+    }
+
+    if(level === 18){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Fq.wav";
+        case 'y':
+          return "/audio/answer_Fy.wav";
+        case 'n':
+          return "/audio/answer_Fn.wav"
+      }
+    }
+
+    if(level === 19){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Cq.wav";
+        case 'y':
+          return "/audio/answer_Cy.wav";
+        case 'n':
+          return "/audio/answer_Cn.wav"
+      }
+    }
+
+    if(level === 20){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Aq.wav";
+        case 'y':
+          return "/audio/answer_Ay.wav";
+        case 'n':
+          return "/audio/answer_An.wav"
+      }
+    }
+
+    if(level === 21){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Dq.wav";
+        case 'y':
+          return "/audio/answer_Dy.wav";
+        case 'n':
+          return "/audio/answer_Dn.wav"
+      }
+    }
+
+    if(level === 22){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Eq.wav";
+        case 'y':
+          return "/audio/answer_Ey.wav";
+        case 'n':
+          return "/audio/answer_En.wav"
+      }
+    }
+
+    if(level === 23){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Fq.wav";
+        case 'y':
+          return "/audio/answer_Fy.wav";
+        case 'n':
+          return "/audio/answer_Fn.wav"
+      }
+    }
+
+    if(level === 24){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Gq.wav";
+        case 'y':
+          return "/audio/answer_Gy.wav";
+        case 'n':
+          return "/audio/answer_Gn.wav"
+      }
+    }
+
+    if(level === 25){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Bq.wav";
+        case 'y':
+          return "/audio/answer_By.wav";
+        case 'n':
+          return "/audio/answer_Bn.wav"
+      }
+    }
+
+    if(level === 26){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Aq.wav";
+        case 'y':
+          return "/audio/answer_Ay.wav";
+        case 'n':
+          return "/audio/answer_An.wav"
+      }
+    }
+
+    if(level === 27){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Dq.wav";
+        case 'y':
+          return "/audio/answer_Dy.wav";
+        case 'n':
+          return "/audio/answer_Dn.wav"
+      }
+    }
+
+    if(level === 28){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Cq.wav";
+        case 'y':
+          return "/audio/answer_Cy.wav";
+        case 'n':
+          return "/audio/answer_Cn.wav"
+      }
+    }
+
+    if(level === 29){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Fq.wav";
+        case 'y':
+          return "/audio/answer_Fy.wav";
+        case 'n':
+          return "/audio/answer_Fn.wav"
+      }
+    }
+
+    if(level === 30){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Gq.wav";
+        case 'y':
+          return "/audio/answer_Gy.wav";
+        case 'n':
+          return "/audio/answer_Gn.wav"
+      }
+    }
+
+    if(level === 31){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Dq.wav";
+        case 'y':
+          return "/audio/answer_Dy.wav";
+        case 'n':
+          return "/audio/answer_Dn.wav"
+      }
+    }
+
+    if(level === 32){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Cq.wav";
+        case 'y':
+          return "/audio/answer_Cy.wav";
+        case 'n':
+          return "/audio/answer_Cn.wav"
+      }
+    }
+
+    if(level === 33){
+      switch (answer) {
+        case 'q':
+          return "/audio/answer_Eq.wav";
+        case 'y':
+          return "/audio/answer_Ey.wav";
+        case 'n':
+          return "/audio/answer_En.wav"
+      }
+    }
+
+    return "/audio/click.wav";
   }
 
   const setLevelSound = (level: number) => {
     const choice = Math.floor(Math.random() * 3)
-    if(level === 2)return "/audio/NextLevel_B.wav";
-    if(level === 3)return "/audio/NextLevel_G.wav";
-    return '';
+    if(level === 14 || level === 20 || level === 26)return "/audio/NextLevel_A.wav";
+    if(level === 2 || level === 13 || level === 15 || level === 25)return "/audio/NextLevel_B.wav";
+    if(level === 3 || level === 11 || level === 17 || level === 24 || level === 30)return "/audio/NextLevel_G.wav";
+    if(level === 4 || level === 12 || level === 19 || level === 28 || level === 32)return "/audio/NextLevel_C.wav";
+    if(level === 5 || level === 8 || level === 14 || level === 27 || level === 31)return "/audio/NextLevel_D.wav";
+    if(level === 6 || level === 10 || level === 18 || level === 23 || level === 29)return "/audio/NextLevel_F.wav";
+    if(level === 7 || level === 9 || level === 16 || level === 22 || level === 33)return "/audio/NextLevel_E.wav";
+
+    return "/audio/click.wav";
   }
 
   const calcResult = (result: number, value: number, opera: string) => {
@@ -155,10 +816,10 @@ export default function Game() {
   }
 
   const spawnSpeed = (level: number) => {
-    if(level < 10) return 2000;
-    else if(level < 20) return 1800;
-    else if(level < 30) return 1400;
-    else return 1000;
+    if(level < 10) return 1200;
+    else if(level < 20) return 1000;
+    else if(level < 30) return 800;
+    else return 500;
   };
 
   const selectOp = () => {
@@ -198,7 +859,7 @@ export default function Game() {
         setLife(life-1);
         setHelp('Incorreto!');
         playSound(setAnswerSound(level,'n'));
-        setNextop('+');
+        // setNextop('+');
         setDots([]);
 
         const takeYourTime = setTimeout(() => { 
@@ -211,7 +872,7 @@ export default function Game() {
       } else {
         setHelp('Correto!')
         playSound(setAnswerSound(level,'y'));
-        setNextop('+');
+        // setNextop('+');
         setDots([]);
 
         const takeYourTime = setTimeout(() => { 
@@ -238,6 +899,7 @@ export default function Game() {
       const leftEnd = `calc(${leftStart} + ${leftVariation}%)`; // Posição final no eixo X
       const dotColor = Math.floor(Math.random() * 32) + 1;//Escolhe cor da bola
 
+      if(load) playSound('/audio/wall_A.wav')
       if(load){setDots((prevDots) => [
         ...prevDots,
         {
@@ -277,7 +939,7 @@ export default function Game() {
       setDots([]);
       let bubbles = 0;
 
-      while(bubbles <= 10){
+      for (let bubbles = 0; bubbles <= 10; bubbles++){
         const leftStart = `${Math.random() * 100}%`; // Posição inicial aleatória no eixo X
         const leftVariation = (Math.random() - 0.5) * 50; // Define se vai mover para esquerda ou direita (-25% a +25%)
         const leftEnd = `calc(${leftStart} + ${leftVariation}%)`; // Posição final no eixo X
@@ -288,20 +950,23 @@ export default function Game() {
           ...prevDots,
           {
             id: uuidv4(),
-            value: bubbles === 10 ? result : result + randomResult,
+            value: bubbles >= 9 ? result : result + randomResult,
             left: leftStart,
             leftEnd,
             dotColor
           }
         ]);
-
-        bubbles++
       }
     }
 
     if(life <= 0) {
       setOver(true);
       setLoad(false);
+      setResult(0);
+      setOpera('');
+      setOldop('');
+      setNextop('');
+      setDots([]);
       playSound('/audio/game_over.wav')
     }
 

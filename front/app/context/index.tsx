@@ -49,10 +49,31 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const [over, setOver] = useState(false);
     const [load, setLoad] = useState(false);
 
+    const audioPool: HTMLAudioElement[] = [];
+    const poolSize = 100;
+
+    if (typeof window !== 'undefined') {
+      for (let pools = 0; pools < poolSize; pools++) {
+        const audio = new Audio();
+        audioPool.push(audio);
+      }
+    }
+    
     const playSound = (src: string) => {
-      const sound = new Audio(src);
-      sound.play();
-    };    
+      if (typeof window !== 'undefined') {
+        const tempAudio = new Audio();
+        tempAudio.src = src;
+        tempAudio.load();
+      }
+      const availableAudio = audioPool.find((audio) => audio.paused);
+      if (availableAudio) {
+        availableAudio.src = src;
+        availableAudio.currentTime = 0;
+        availableAudio.play();
+      } else {
+        console.warn('Não há instâncias de áudio disponíveis no pool.');
+      }
+    };
 
   return (
     <AppContext.Provider value={{ playSound, page, setPage, level, setLevel, points, setPoints,
