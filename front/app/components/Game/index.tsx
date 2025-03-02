@@ -1011,7 +1011,7 @@ export default function Game() {
         </>
       ) : (
         <MainSection>
-          <Image src="/logo.png" alt="Logo da minha aplicação" width={200} height={175} priority={true}/>
+          <Image src="/logo.png" alt="Logo da minha aplicação" width={400} height={350} priority={true}/>
           {over ? <h1>Game Over<br />Level {level}<br />Points {points}</h1> : <h1>Level {level}</h1>}
           <MenuButton onClick={() => {playSound("/audio/click.wav"), over ? setPage("home") : setLoad(true)}}>
             {over ? 'Voltar' : 'Jogar'}

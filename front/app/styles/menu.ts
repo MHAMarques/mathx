@@ -16,7 +16,7 @@ export const MenuButton = styled.button`
     border-radius:5px;
     padding: 10px;
     width:90%;
-    max-width:120px;
+    max-width:160px;
     color: #FFFFFF;
 
     &:hover {

@@ -9,7 +9,7 @@ export default function Menu() {
   
   return (
     <MainSection>
-      <Image src="/logo.png" alt="Logo da minha aplicação" width={200} height={175} priority={true}/>
+      <Image src="/logo.png" alt="Logo da minha aplicação" width={400} height={350} priority={true}/>
       { load ? (
         <>
           <MenuButton onClick={() => {
