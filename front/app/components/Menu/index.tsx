@@ -19,19 +19,19 @@ export default function Menu() {
             setLevel(1);
             setPoints(0);
           }}>
-            Jogar
+            Play
           </MenuButton>
           <MenuButton onClick={() => {
             playSound("/audio/click.wav");
             setPage("help");
           }}>
-            Ajuda
+            Help
           </MenuButton>
           <MenuButton onClick={() => {
             playSound("/audio/click.wav");
             setPage("records");
           }}>
-            Recordes
+            Top 10
           </MenuButton>
         </>
       ) : (
@@ -40,7 +40,7 @@ export default function Menu() {
             playSound("/audio/game_intro.wav");
             setLoad(true);
           }}>
-            Iniciar
+            Start
           </MenuButton>
         </>
       ) }

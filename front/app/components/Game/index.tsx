@@ -856,7 +856,7 @@ export default function Game() {
       if(value !== result){
 
         setLife(life-1);
-        setHelp('Incorreto!');
+        setHelp('Wrong!');
         playSound(setAnswerSound(level,'n'));
         setNextop('+');
 
@@ -868,7 +868,7 @@ export default function Game() {
         }, 1500);
 
       } else {
-        setHelp('Correto!');
+        setHelp('Correct!');
         playSound(setAnswerSound(level,'y'));
         setNextop('+');
 
@@ -928,7 +928,7 @@ export default function Game() {
 
   useEffect(() => {
     if(opera === '') {
-      setHelp('Escolha um número');
+      setHelp('Pick a number!');
       setNextop(selectOp() === '=' ? '+' : '-');
     }
 
@@ -936,7 +936,7 @@ export default function Game() {
 
   useEffect(() => {
     if(opera === '='){
-      setHelp('Qual o resultado?');
+      setHelp('The answer is?');
       playSound(setAnswerSound(level,'q'));
       setDots([]);
       console.log('RESULT: ', result)
@@ -1006,7 +1006,7 @@ export default function Game() {
             
             <BottomSection $level={level}>
                 <div>
-                    <p></p>Nivel {level} | Pontos: {points} | Tentativas: {life}
+                    <p></p>Level: {level} | Points: {points} | Attempts: {life}
                 </div>
             </BottomSection>
         </>
@@ -1019,7 +1019,7 @@ export default function Game() {
             if (over) setPage("home");
             else setLoad(true);
           }}>
-            {over ? 'Voltar' : 'Jogar'}
+            {over ? 'Back' : 'Play'}
           </MenuButton>
         </MainSection>
       ) }
