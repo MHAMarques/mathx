@@ -29,7 +29,7 @@ export default function Menu() {
           </MenuButton>
           <MenuButton onClick={() => {
             playSound("/audio/click.wav");
-            setPage("records");
+            setPage("toplist");
           }}>
             Top 10
           </MenuButton>

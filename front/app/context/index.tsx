@@ -29,12 +29,19 @@ interface AppContextType {
     setOver: (over: boolean) => void;
     load: boolean;
     setLoad: (load: boolean) => void;
+    records: record[];
+    setRecords: (records: record[]) => void;
+    saveRecords: (records: record) => void;
 }
 
-// Criando o contexto com valores padrão
+interface record {
+  level: number;
+  points: number;
+  date: string;
+}
+
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-// Criando o Provider do contexto
 export function AppProvider({ children }: { children: ReactNode }) {
     const [page, setPage] = useState("home");
     const [level, setLevel] = useState(1);
@@ -48,6 +55,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const [result, setResult] = useState(0);
     const [over, setOver] = useState(false);
     const [load, setLoad] = useState(false);
+    const [records, setRecords] = useState<record[]>([]);
+    const STORAGE_KEY = "MemoryMathResults;"
 
     const audioPool: HTMLAudioElement[] = [];
     const poolSize = 100;
@@ -75,10 +84,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
       }
     };
 
+    const saveRecords = (newRecord: record) => {
+      const updatedRecords = [...records, newRecord];
+      setRecords(updatedRecords);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedRecords));
+    };
+
   return (
     <AppContext.Provider value={{ playSound, page, setPage, level, setLevel, points, setPoints,
        life, setLife, help, setHelp, opera, setOpera, nextop, setNextop, oldop, setOldop, 
-       select, setSelect, result, setResult, over, setOver, load, setLoad }}>
+       select, setSelect, result, setResult, over, setOver, load, setLoad,
+       records, setRecords, saveRecords }}>
       {children}
     </AppContext.Provider>
   );

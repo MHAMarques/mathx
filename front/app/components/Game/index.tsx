@@ -46,7 +46,8 @@ export default function Game() {
     over,
     setOver,
     load,
-    setLoad
+    setLoad,
+    saveRecords,
   } = useApp();
   const [dots, setDots] = useState<Dot[]>([]);
 
@@ -963,6 +964,13 @@ export default function Game() {
 
   useEffect(() => {
     if(life <= 0) {
+      const newRecord = {
+        level: level,
+        points: points,
+        date: new Date().toISOString(),
+      };
+      saveRecords(newRecord);
+
       setOver(true);
       setLoad(false);
       setResult(0);

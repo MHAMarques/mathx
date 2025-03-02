@@ -14,7 +14,7 @@ export default function How() {
         <ul>
             <li>1. No negative numbers, everything bellow zero is zero!</li>
             <li>2. After the first, every number you pick, comes with an operation: Add, Substract or Multiply.</li>
-            <li>3. The operation in the middle belongs to the number you select.</li>
+            <li>3. The operation in the middle of the circle belongs to the number you will select.</li>
             <li>4. In the top is the next operation and bellow the last selection.</li>
             <li>5. Keep track of the result in you memory so you can choose the correct answer when the question comes.</li>
             <li>6. You have a couple of attempts to answer wrong to game over.</li>
