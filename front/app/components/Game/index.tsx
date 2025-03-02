@@ -170,7 +170,7 @@ export default function Game() {
   }
 
   const nextLevel = (level: number, result: number) => {
-    if(points + result >= level*100){
+    if(points + result >= level*100 && level < 33){
       playSound(setLevelSound(level+1))
       setLevel(level+1);
       setPoints(0);
