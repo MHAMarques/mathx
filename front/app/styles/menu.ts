@@ -17,7 +17,7 @@ export const MenuButton = styled.button`
     padding: 10px;
     width:90%;
     max-width:160px;
-    color: #FFFFFF;
+    color:rgb(64, 3, 161);
 
     &:hover {
         background-color: var(--hoverPurple);

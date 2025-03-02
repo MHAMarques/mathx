@@ -200,7 +200,10 @@ export const BottomSection = styled.div<{ $level: number }>`
     width: 100%;
     min-height: 50px;
     padding: 15px;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     background-color: ${(props) => setLevelColor(props.$level)};
+    background: linear-gradient(to bottom, rgb(41, 41, 41), ${(props) => setLevelColor(props.$level)} 8%);
     z-index:3;
 `;
 
