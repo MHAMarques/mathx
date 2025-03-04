@@ -5,6 +5,10 @@ import { createContext, useContext, ReactNode, useState } from "react";
 // Tipagem das funções e estados que o contexto vai fornecer
 interface AppContextType {
     playSound: (src: string) => void;
+    content: laguangeContent;
+    setContent: (language: laguangeContent) => void;
+    language: string;
+    setLanguage: (language: string) => void;
     page: string;
     setPage: (page: string) => void;
     level: number;
@@ -40,9 +44,38 @@ interface record {
   date: string;
 }
 
+interface laguangeContent {
+  start: string;
+  quest: string;
+  yes: string;
+  no: string;
+  lvl: string;
+  pts: string;
+  lif: string;
+  end: string;
+  ply: string;
+  how: string;
+  bak: string;
+}
+
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export function AppProvider({ children }: { children: ReactNode }) {
+    const STORAGE_KEY = "MemoryMathResults;"
+    const [content, setContent] = useState<laguangeContent> ({
+      start: '',
+      quest: '',
+      yes: '',
+      no: '',
+      lvl: '',
+      pts: '',
+      lif: '',
+      end: '',
+      ply: '',
+      how: '',
+      bak: ''
+    });
+    const [language, setLanguage] = useState('pt');
     const [page, setPage] = useState("home");
     const [level, setLevel] = useState(1);
     const [points, setPoints] = useState(0);
@@ -56,8 +89,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const [over, setOver] = useState(false);
     const [load, setLoad] = useState(false);
     const [records, setRecords] = useState<record[]>([]);
-    const STORAGE_KEY = "MemoryMathResults;"
-
     const audioPool: HTMLAudioElement[] = [];
     const poolSize = 100;
 
@@ -96,7 +127,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     };
 
   return (
-    <AppContext.Provider value={{ playSound, page, setPage, level, setLevel, points, setPoints,
+    <AppContext.Provider value={{ playSound, content, setContent, language, setLanguage, page, setPage, level, setLevel, points, setPoints,
        life, setLife, help, setHelp, opera, setOpera, nextop, setNextop, oldop, setOldop, 
        select, setSelect, result, setResult, over, setOver, load, setLoad,
        records, setRecords, saveRecords }}>

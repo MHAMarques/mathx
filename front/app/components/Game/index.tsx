@@ -24,6 +24,7 @@ export default function Game() {
 
   const { 
     playSound,
+    content,
     level,
     setLevel,
     points,
@@ -857,7 +858,7 @@ export default function Game() {
       if(value !== result){
 
         setLife(life-1);
-        setHelp('Wrong!');
+        setHelp(content.no);
         playSound(setAnswerSound(level,'n'));
         setNextop('+');
 
@@ -869,7 +870,7 @@ export default function Game() {
         }, 1500);
 
       } else {
-        setHelp('Correct!');
+        setHelp(content.yes);
         playSound(setAnswerSound(level,'y'));
         setNextop('+');
 
@@ -929,7 +930,7 @@ export default function Game() {
 
   useEffect(() => {
     if(opera === '') {
-      setHelp('Pick a number!');
+      setHelp(content.start);
       setNextop(selectOp() === '=' ? '+' : '-');
     }
 
@@ -937,7 +938,7 @@ export default function Game() {
 
   useEffect(() => {
     if(opera === '='){
-      setHelp('The answer is?');
+      setHelp(content.quest);
       playSound(setAnswerSound(level,'q'));
       setDots([]);
       console.log('RESULT: ', result)
@@ -1014,20 +1015,20 @@ export default function Game() {
             
             <BottomSection $level={level}>
                 <div>
-                    <p></p>Level: {level} | Points: {points} | Attempts: {life}
+                    <p></p>{content.lvl}: {level} | {content.pts}: {points} | {content.lif}: {life}
                 </div>
             </BottomSection>
         </>
       ) : (
         <MainSection>
           <Image src="/logo.png" alt="Logo da minha aplicação" width={400} height={350} priority={true}/>
-          {over ? <h1>Game Over<br />Level {level}<br />Points {points}</h1> : <h1>Level {level}</h1>}
+          {over ? <h1>{content.end}<br />{content.lvl} {level}<br />{content.pts} {points}</h1> : <h1>{content.lvl} {level}</h1>}
           <MenuButton onClick={() => {
             playSound("/audio/click.wav");
             if (over) setPage("home");
             else setLoad(true);
           }}>
-            {over ? 'Back' : 'Play'}
+            {over ? content.bak : content.ply}
           </MenuButton>
         </MainSection>
       ) }
