@@ -24,6 +24,8 @@ export default function Game() {
 
   const { 
     playSound,
+    playMusic,
+    stopMusic,
     content,
     level,
     setLevel,
@@ -817,7 +819,7 @@ export default function Game() {
   }
 
   const spawnSpeed = (level: number) => {
-    if(level < 10) return 1200;
+    if(level < 10) return 1400;
     else if(level < 20) return 1000;
     else if(level < 30) return 800;
     else return 500;
@@ -833,6 +835,7 @@ export default function Game() {
 
   const nextLevel = (level: number, result: number) => {
     if(points + result >= level*100 && level < 33){
+      stopMusic();
       playSound(setLevelSound(level+1))
       setLevel(level+1);
       setPoints(0);
@@ -904,7 +907,7 @@ export default function Game() {
         ...prevDots,
         {
           id: uuidv4(),
-          value: Math.floor(Math.random() * (level*5)) + 1,
+          value: Math.floor(Math.random() * (level*3)) + 1,
           left: leftStart,
           leftEnd,
           dotColor
@@ -965,6 +968,7 @@ export default function Game() {
 
   useEffect(() => {
     if(life <= 0) {
+      stopMusic();
       const newRecord = {
         level: level,
         points: points,
@@ -982,6 +986,10 @@ export default function Game() {
       playSound('/audio/game_over.wav')
     }
   }, [life]);
+
+  useEffect(() => {
+    if(load) playMusic("/audio/music_lvl" + level + ".mp3");
+  }, [level, load]);
   
   return (
     <MainContainer>

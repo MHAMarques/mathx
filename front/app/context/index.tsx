@@ -1,10 +1,12 @@
 "use client";
 
-import { createContext, useContext, ReactNode, useState } from "react";
+import { createContext, useContext, ReactNode, useState, useRef } from "react";
 
 // Tipagem das funções e estados que o contexto vai fornecer
 interface AppContextType {
     playSound: (src: string) => void;
+    playMusic: (src: string) => void;
+    stopMusic: () => void;
     content: laguangeContent;
     setContent: (language: laguangeContent) => void;
     language: string;
@@ -90,6 +92,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const [load, setLoad] = useState(false);
     const [records, setRecords] = useState<record[]>([]);
     const audioPool: HTMLAudioElement[] = [];
+    const musicAudio = useRef<HTMLAudioElement | null>(null);
+    const isPlayingRef = useRef(false);
     const poolSize = 100;
 
     if (typeof window !== 'undefined') {
@@ -115,6 +119,36 @@ export function AppProvider({ children }: { children: ReactNode }) {
       }
     };
 
+    const playMusic = (src: string) => {
+      if (typeof window !== "undefined") {
+        if (!musicAudio.current) {
+          musicAudio.current = new Audio();
+          musicAudio.current.loop = true;
+        }
+    
+        if (musicAudio.current.src !== src) {
+          musicAudio.current.src = src;
+          musicAudio.current.load();
+          isPlayingRef.current = false;
+        }
+        musicAudio.current.volume = 0.4;
+        if (!isPlayingRef.current) {
+          musicAudio.current
+            .play()
+            .then(() => (isPlayingRef.current = true))
+            .catch((err) => console.error("Erro ao reproduzir música:", err));
+        }
+      }
+    };
+    
+    const stopMusic = () => {
+      if (musicAudio.current) {
+        for (let index = 4; index >= 0; index--) musicAudio.current.volume = index/10;
+        musicAudio.current.pause();
+        musicAudio.current.currentTime = 0;
+      }
+    };
+
     const saveRecords = (newRecord: record) => {
       const updatedRecords = [...records, newRecord]
         .sort((a, b) => {
@@ -127,7 +161,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     };
 
   return (
-    <AppContext.Provider value={{ playSound, content, setContent, language, setLanguage, page, setPage, level, setLevel, points, setPoints,
+    <AppContext.Provider value={{ playSound, playMusic, stopMusic, content, setContent, language, setLanguage, page, setPage, level, setLevel, points, setPoints,
        life, setLife, help, setHelp, opera, setOpera, nextop, setNextop, oldop, setOldop, 
        select, setSelect, result, setResult, over, setOver, load, setLoad,
        records, setRecords, saveRecords }}>
