@@ -205,28 +205,29 @@ export const MainSection = styled.div`
     padding: 15px;
 `;
 
-export const BottomSection = styled.div<{ $level: number }>`
+export const BottomSection = styled.div<{ $level: number; $dots: number | null;}>`
     position: fixed;
     bottom:0px;
     display: flex;
     gap:15px;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     width: 100%;
+    height: ${(props) => props.$dots ? props.$dots > 10 ? props.$dots * 5 : 50 : 50}px;
     min-height: 50px;
-    padding: 15px;
+    padding: 10px;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     background-color: ${(props) => setLevelColor(props.$level)};
-    background: linear-gradient(to bottom, rgb(41, 41, 41), ${(props) => setLevelColor(props.$level)} 8%);
+    background: linear-gradient(to bottom, rgb(41, 41, 41), ${(props) => setLevelColor(props.$level)} 5px);
     z-index:3;
 `;
 
 export const AnimatedDot = styled.div<{ $left: string; $leftEnd: string; $dotColor: number; $level: number}>`
     position: absolute;
     left: ${(props) => props.$left};
-    bottom: -20px;
+    bottom: -100px;
     width: 100px;
     height: 100px;
     background-color: ${(props) => setLevelColor(props.$dotColor)};
@@ -236,7 +237,7 @@ export const AnimatedDot = styled.div<{ $left: string; $leftEnd: string; $dotCol
     align-items: center;
     border-radius: 50%;
     font-weight: bold;
-    animation: ${(props) => moveRandom(props.$leftEnd)} ${(props) => setLevelSpeed(props.$level)} linear forwards;
+    animation: ${(props) => moveRandom(props.$leftEnd)} ${(props) => setLevelSpeed(props.$level*2)} linear forwards;
     z-index: 1;
 `;
 

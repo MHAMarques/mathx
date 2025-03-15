@@ -54,7 +54,7 @@ export default function Menu() {
             playSound("/audio/click.wav");
             setPage("game");
             setOver(false);
-            setLife(2);
+            setLife(4);
             setLevel(1);
             setPoints(0);
           }}>

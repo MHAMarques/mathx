@@ -819,10 +819,11 @@ export default function Game() {
   }
 
   const spawnSpeed = (level: number) => {
-    if(level < 10) return 1400;
-    else if(level < 20) return 1000;
-    else if(level < 30) return 800;
-    else return 500;
+    if(level <= 7) return 1400;
+    else if(level < 14) return 1200;
+    else if(level < 21) return 800;
+    else if(level < 28) return 600;
+    else return 400;
   };
 
   const selectOp = () => {
@@ -901,13 +902,14 @@ export default function Game() {
       const leftVariation = (Math.random() - 0.5) * 50; // Define se vai mover para esquerda ou direita (-25% a +25%)
       const leftEnd = `calc(${leftStart} + ${leftVariation}%)`; // Posição final no eixo X
       const dotColor = Math.floor(Math.random() * 32) + 1;//Escolhe cor da bola
+      const lvlDiff = level < 5 ? 3 : 2;
 
-      if(load) playSound('/audio/wall_A.wav')
+      //if(load) playSound('/audio/wall_A.wav')
       if(load){setDots((prevDots) => [
         ...prevDots,
         {
           id: uuidv4(),
-          value: Math.floor(Math.random() * (level*3)) + 1,
+          value: Math.floor(Math.random() * (level * lvlDiff)) + 1,
           left: leftStart,
           leftEnd,
           dotColor
@@ -921,15 +923,9 @@ export default function Game() {
   }, [load, level]);
 
   useEffect(() => {
-    const removeOldDotsInterval = setInterval(() => {
-      if(load) setDots((prevDots) => prevDots.slice(dots.length > 10 ? dots.length - 5 : 1))
-      else setDots([]);
-    }, 30000);
-
-    return () => {
-      clearInterval(removeOldDotsInterval);
-    };
-  }, [load, dots.length]);
+      console.log("Numbers: ", dots.length);
+      if(dots.length > 125) setLife(0);
+  }, [dots.length]);
 
   useEffect(() => {
     if(opera === '') {
@@ -1020,8 +1016,7 @@ export default function Game() {
             ))}
             </MainSection>
             
-            
-            <BottomSection $level={level}>
+            <BottomSection $level={level} $dots={dots.length}>
                 <div>
                     <p></p>{content.lvl}: {level} | {content.pts}: {points} | {content.lif}: {life}
                 </div>
