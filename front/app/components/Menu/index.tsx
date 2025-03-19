@@ -5,7 +5,7 @@ import { useApp } from "@/app/context";
 import { MainSection, MenuButton } from "@/app/styles/menu";
 
 export default function Menu() {
-  const { language, setLanguage, content, setContent, setPage, playSound, setOver, load, setLoad, setLife, setLevel, setPoints } = useApp();
+  const { language, setLanguage, content, setContent, setPage, playSound, playMusic, setOver, load, setLoad, setLife, setLevel, setPoints } = useApp();
   useEffect(() => {
     if(language === 'pt'){
       setContent({
@@ -37,11 +37,13 @@ export default function Menu() {
         bak: 'Back'
       });
     }
-  }, [language, setContent]);
+    
+    if(!load) playSound("/audio/game_intro.wav");
+  }, [language, setContent, load]);
   
   return (
     <MainSection>
-      <Image src="/logo.png" alt="Logo da minha aplicação" width={400} height={350} priority={true}/>
+      <Image src="/logo.png" alt="Logo Memory Math" width={400} height={350} priority={true}/>
       { load ? (
         <>
           <MenuButton onClick={() => {
@@ -70,14 +72,14 @@ export default function Menu() {
       ) : (
         <>
           <MenuButton onClick={() => {
-            playSound("/audio/game_intro.wav");
+            playMusic("/audio/music_intro.mp3");
             setLanguage("pt");
             setLoad(true);
           }}>
             Portugues
           </MenuButton>
           <MenuButton onClick={() => {
-            playSound("/audio/game_intro.wav");
+            playMusic("/audio/music_intro.mp3");
             setLanguage("en");
             setLoad(true);
           }}>

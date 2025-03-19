@@ -131,7 +131,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
           musicAudio.current.load();
           isPlayingRef.current = false;
         }
-        musicAudio.current.volume = 0.4;
+        musicAudio.current.volume = 0.8;
         if (!isPlayingRef.current) {
           musicAudio.current
             .play()
@@ -143,7 +143,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     
     const stopMusic = () => {
       if (musicAudio.current) {
-        for (let index = 4; index >= 0; index--) musicAudio.current.volume = index/10;
+        for (let index = 8; index >= 0; index--) musicAudio.current.volume = index/10;
         musicAudio.current.pause();
         musicAudio.current.currentTime = 0;
       }

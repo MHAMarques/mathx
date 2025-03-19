@@ -108,7 +108,7 @@ export const TopSection = styled.div<{ $level: number }>`
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    background-color:  rgba(0, 0, 0, 0.90);
+    background-color:  rgba(0, 0, 0, 0.75);
     align-items: center;
     width: 100%;
     max-height:120px;

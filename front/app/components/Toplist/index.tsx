@@ -63,7 +63,7 @@ export default function Toplist() {
             ))}</ul>
         ) : (<p>{toptext.nolist}</p>)}
         <MenuButton onClick={() => {
-        playSound("/audio/click.wav");
+            playSound("/audio/click.wav");
             setPage("home");
         }}>
             {content.bak}
