@@ -923,7 +923,6 @@ export default function Game() {
   }, [load, level]);
 
   useEffect(() => {
-      console.log("Numbers: ", dots.length);
       if(dots.length > 125) setLife(0);
   }, [dots.length]);
 

@@ -81,7 +81,7 @@ export default function How() {
             <li>9. {rules.reg9}</li>
         </ul>
         <MenuButton onClick={() => {
-        playSound("/audio/click.wav");
+            playSound("/audio/click.wav");
             setPage("home");
         }}>
             {content.bak}
