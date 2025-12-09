@@ -820,10 +820,10 @@ export default function Game() {
 
   const spawnSpeed = (level: number) => {
     if(level <= 7) return 1400;
-    else if(level < 14) return 1200;
-    else if(level < 21) return 800;
-    else if(level < 28) return 600;
-    else return 400;
+    else if(level < 14) return 1380;
+    else if(level < 21) return 1340;
+    else if(level < 28) return 1260;
+    else return 1100;
   };
 
   const selectOp = () => {
@@ -1017,7 +1017,7 @@ export default function Game() {
             
             <BottomSection $level={level} $dots={dots.length}>
                 <div>
-                    <p></p>{content.lvl}: {level} | {content.pts}: {points} | {content.lif}: {life}
+                    <p></p>{content.lvl}: {level} | {content.pts}: {points}/{level*100} | {content.lif}: {life}
                 </div>
             </BottomSection>
         </>
