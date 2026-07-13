@@ -25,3 +25,23 @@ export const MenuButton = styled.button`
         font-weight: bold;
     }
 `;
+
+export const DisclaimerDiv = styled.div`
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: darkgray;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+
+    span {
+        font-weight: bold;
+        font-size: 13px;
+    }
+`;
